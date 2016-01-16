@@ -19,5 +19,7 @@ namespace OpenClassRoomsActiviteASP1
         Task<List<Emprunt>> ObtenirListeDeTousLesEmpruntsAsync();
 
         void AjouterAuteur(string Nom);
+        void AjouterClient(string Nom, string Email);
+        void AjouterLivre(string Titre, string Auteur, DateTime DateDeParution);
     }
 }

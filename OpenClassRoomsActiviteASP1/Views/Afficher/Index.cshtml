@@ -1,19 +1,18 @@
-﻿@model AuteursViewModel
+﻿@model LivresViewModel
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<span>Quantité auteurs : @Model.qteAuteurs</span>
+<span>Quantité livres : @Model.qteLivres</span>
 
 <table>
-    @foreach (var auteur in Model.listeAuteurs)
+    @foreach (var livre in Model.listeLivres)
     {
         <tr>
-            <td>@auteur.Id</td>
-            <td>@auteur.Nom</td>
+            <td>Titre : @livre.Titre </td>
+            <td>Auteur : @livre.AuteurDuLivre </td>
+            <td>Date de parution : @livre.DateDeParution </td>
         </tr>
     }
 

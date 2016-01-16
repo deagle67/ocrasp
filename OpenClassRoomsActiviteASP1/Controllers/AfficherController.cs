@@ -13,6 +13,19 @@ namespace OpenClassRoomsActiviteASP1
         {
             var dal = new Dal();
 
+            var viewModel = new LivresViewModel
+            {
+                listeLivres = await dal.ObtenirListeDeTousLesLivresAsync(),
+                qteLivres = await dal.ObtenirQteLivresAsync()
+            };
+
+            return View(viewModel);
+        }
+
+        public async Task<ActionResult> Auteurs()
+        {
+            var dal = new Dal();
+
             var viewModel = new AuteursViewModel
             {
                 listeAuteurs = await dal.ObtenirListeDeTousLesAuteursAsync(),
@@ -21,11 +34,5 @@ namespace OpenClassRoomsActiviteASP1
 
             return View(viewModel);
         }
-    }
-
-    public class AuteursViewModel
-    {
-        public List<Auteur> listeAuteurs;
-        public int qteAuteurs;
     }
 }

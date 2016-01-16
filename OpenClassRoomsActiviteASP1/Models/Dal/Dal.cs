@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
@@ -72,6 +73,19 @@ namespace OpenClassRoomsActiviteASP1
         public void AjouterAuteur(string Nom)
         {
             bdd.Auteurs.Add(new Auteur { Nom = Nom } );
+            bdd.SaveChanges();
+        }
+
+        public void AjouterClient(string Nom, string Email)
+        {
+            bdd.Clients.Add(new Client { Nom = Nom, Email = Email });
+            bdd.SaveChanges();
+        }
+
+        public void AjouterLivre(string Titre, string Auteur, DateTime DateDeParution)
+        {
+            Auteur auteur = new Auteur { Nom = Auteur };
+            bdd.Livres.Add(new Livre { Titre = Titre, AuteurDuLivre = auteur, DateDeParution = DateDeParution });
             bdd.SaveChanges();
         }
     }
