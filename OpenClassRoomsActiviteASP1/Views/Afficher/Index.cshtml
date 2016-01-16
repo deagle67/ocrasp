@@ -1,0 +1,23 @@
+﻿@model AuteursViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<span>Quantité auteurs : @Model.qteAuteurs</span>
+
+<table>
+    @foreach (var auteur in Model.listeAuteurs)
+    {
+        <tr>
+            <td>@auteur.Id</td>
+            <td>@auteur.Nom</td>
+        </tr>
+    }
+
+</table>
+
+
+
