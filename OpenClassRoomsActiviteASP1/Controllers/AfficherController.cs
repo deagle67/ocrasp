@@ -11,28 +11,32 @@ namespace OpenClassRoomsActiviteASP1
     {
         public async Task<ActionResult> Index()
         {
-            var dal = new Dal();
-
-            var viewModel = new LivresViewModel
+            using (var dal = new Dal())
             {
-                listeLivres = await dal.ObtenirListeDeTousLesLivresAsync(),
-                qteLivres = await dal.ObtenirQteLivresAsync()
-            };
+                var viewModel = new LivresViewModel
+                {
+                    listeLivres = await dal.ObtenirListeDeTousLesLivresAsync(),
+                    qteLivres = await dal.ObtenirQteLivresAsync()
+                };
 
-            return View(viewModel);
+                ViewBag.ListeLivres = new SelectList(viewModel.listeLivres, "Titre");
+
+                return View(viewModel);
+            }
         }
 
         public async Task<ActionResult> Auteurs()
         {
-            var dal = new Dal();
-
-            var viewModel = new AuteursViewModel
+            using (var dal = new Dal())
             {
-                listeAuteurs = await dal.ObtenirListeDeTousLesAuteursAsync(),
-                qteAuteurs = await dal.ObtenirQteAuteursAsync()
-            };
+                var viewModel = new AuteursViewModel
+                {
+                    listeAuteurs = await dal.ObtenirListeDeTousLesAuteursAsync(),
+                    qteAuteurs = await dal.ObtenirQteAuteursAsync()
+                };
 
-            return View(viewModel);
+                return View(viewModel);
+            }
         }
     }
 }

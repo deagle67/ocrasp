@@ -176,7 +176,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModels\ViewModels.cs" />
+    <Compile Include="ViewModels\AuteursViewModel.cs" />
+    <Compile Include="ViewModels\LivresViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
