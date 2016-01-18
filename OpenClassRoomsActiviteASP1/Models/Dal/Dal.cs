@@ -34,12 +34,6 @@ namespace OpenClassRoomsActiviteASP1
             return listeClients;
         }
 
-        public async Task<List<Emprunt>> ObtenirListeDeTousLesEmpruntsAsync()
-        {
-            var listeEmprunts = await bdd.Emprunts.ToListAsync();
-            return listeEmprunts;
-        }
-
         public async Task<List<Livre>> ObtenirListeDeTousLesLivresAsync()
         {
             var listeLivres = await bdd.Livres.ToListAsync();
@@ -64,28 +58,22 @@ namespace OpenClassRoomsActiviteASP1
             return qteLivres;
         }
 
-        public async Task<int> ObtenirQteLivresEmpruntesAsync()
-        {
-            var qteLivresEmpruntes = await bdd.Emprunts.CountAsync();
-            return qteLivresEmpruntes;
-        }
-
         public void AjouterAuteur(string Nom)
         {
             bdd.Auteurs.Add(new Auteur { Nom = Nom } );
             bdd.SaveChanges();
         }
 
-        public void AjouterClient(string Nom, string Email)
+        public void AjouterClient(string nom, string email, Livre livre)
         {
-            bdd.Clients.Add(new Client { Nom = Nom, Email = Email });
+            bdd.Clients.Add(new Client { Nom = nom, Email = email, Livres = null });
             bdd.SaveChanges();
         }
 
-        public void AjouterLivre(string Titre, string Auteur, DateTime DateDeParution)
+        public void AjouterLivre(string titre, string auteur, DateTime dateDeParution, Client client, string email)
         {
-            Auteur auteur = new Auteur { Nom = Auteur };
-            bdd.Livres.Add(new Livre { Titre = Titre, AuteurDuLivre = auteur, DateDeParution = DateDeParution });
+            Auteur newAuteur = new Auteur { Nom = auteur };
+            bdd.Livres.Add(new Livre { Titre = titre, Nom = newAuteur, DateDeParution = dateDeParution, Client = client, Email = email });
             bdd.SaveChanges();
         }
     }

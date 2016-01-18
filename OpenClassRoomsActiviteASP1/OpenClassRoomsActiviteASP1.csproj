@@ -170,7 +170,6 @@
     <Compile Include="Models\Dal\BddContext.cs" />
     <Compile Include="Models\Dal\Client.cs" />
     <Compile Include="Models\Dal\Dal.cs" />
-    <Compile Include="Models\Dal\Emprunt.cs" />
     <Compile Include="Models\Dal\Livre.cs" />
     <Compile Include="Models\IDal\IDal.cs" />
     <Compile Include="Global.asax.cs">

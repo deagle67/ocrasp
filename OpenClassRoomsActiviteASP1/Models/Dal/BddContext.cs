@@ -8,6 +8,5 @@ namespace OpenClassRoomsActiviteASP1
         public DbSet<Auteur> Auteurs { get; set; }
         public DbSet<Livre> Livres { get; set; }
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Emprunt> Emprunts { get; set; }
     }
 }

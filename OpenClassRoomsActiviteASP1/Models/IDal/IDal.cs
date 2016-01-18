@@ -11,15 +11,13 @@ namespace OpenClassRoomsActiviteASP1
         Task<int> ObtenirQteClientsAsync();
         Task<int> ObtenirQteLivresAsync();
         Task<int> ObtenirQteAuteursAsync();
-        Task<int> ObtenirQteLivresEmpruntesAsync();
 
         Task<List<Livre>> ObtenirListeDeTousLesLivresAsync();
         Task<List<Auteur>> ObtenirListeDeTousLesAuteursAsync();
         Task<List<Client>> ObtenirListeDeTousLesClientsAsync();
-        Task<List<Emprunt>> ObtenirListeDeTousLesEmpruntsAsync();
 
         void AjouterAuteur(string Nom);
-        void AjouterClient(string Nom, string Email);
-        void AjouterLivre(string Titre, string Auteur, DateTime DateDeParution);
+        void AjouterClient(string nom, string email, Livre livre);
+        void AjouterLivre(string titre, string auteur, DateTime dateDeParution, Client client, string email);
     }
 }
