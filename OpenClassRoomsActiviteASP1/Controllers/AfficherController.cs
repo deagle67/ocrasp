@@ -21,16 +21,6 @@ namespace OpenClassRoomsActiviteASP1
                     qteLivres = dal.ObtenirQteLivres()
                 };
 
-                /*if (viewModel.qteLivres == 0)
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        dal.AjouterLivre("Titre" + i, "Auteur" + i, DateTime.Now, null, "truc@truc.com" + i);
-                        dal.AjouterClient("Client" + i, "Email" + i);
-                        dal.AjouterAuteur("Auteur" + i);
-                    }
-                }*/
-
                 return View(viewModel);
             }
         }
