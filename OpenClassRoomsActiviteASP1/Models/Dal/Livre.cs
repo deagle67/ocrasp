@@ -7,14 +7,15 @@ namespace OpenClassRoomsActiviteASP1
     [Table("Livres")]
     public class Livre
     {
-        [Key]
-        public string Email { get; set; }
+        public int LivreId { get; set; }
         [Required, MaxLength(80)]
         public string Titre { get; set; }
         [Required]
-        public DateTime DateDeParution { get; set; }
-        [Required]
-        public virtual Auteur Nom { get; set; }
+        public System.DateTime DateDeParution { get; set; }
+        public int AuteurAuteurId { get; set; }
+        public string ClientEmail { get; set; }
+
+        public virtual Auteur Auteur { get; set; }
         public virtual Client Client { get; set; }
     }
 }

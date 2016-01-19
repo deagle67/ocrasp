@@ -8,16 +8,19 @@ namespace OpenClassRoomsActiviteASP1
 {
     interface IDal : IDisposable
     {
-        Task<int> ObtenirQteClientsAsync();
-        Task<int> ObtenirQteLivresAsync();
-        Task<int> ObtenirQteAuteursAsync();
+        int ObtenirQteClients();
+        int ObtenirQteLivres();
+        int ObtenirQteAuteurs();
 
-        Task<List<Livre>> ObtenirListeDeTousLesLivresAsync();
-        Task<List<Auteur>> ObtenirListeDeTousLesAuteursAsync();
-        Task<List<Client>> ObtenirListeDeTousLesClientsAsync();
+        List<Livre> ObtenirListeDeTousLesLivres();
+        List<string> ObtenirListeDeTousLesAuteurs();
+        List<Client> ObtenirListeDeTousLesClients();
+
+        List<string> ObtenirLivresParAuteurId(int id);
+        Livre ObtenirLivreParLivreId(int id);
 
         void AjouterAuteur(string Nom);
-        void AjouterClient(string nom, string email, Livre livre);
+        void AjouterClient(string nom, string email);
         void AjouterLivre(string titre, string auteur, DateTime dateDeParution, Client client, string email);
     }
 }

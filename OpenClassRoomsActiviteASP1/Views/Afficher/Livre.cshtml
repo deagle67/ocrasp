@@ -1,0 +1,22 @@
+﻿@model LivreParId
+
+
+@{
+    ViewBag.Title = "Livre";
+}
+
+<h2>Livre</h2>
+@if (Model == null)
+{
+    <p>Livre non trouvé.</p>
+}
+else
+{
+<div>
+    <p>Titre : @Model.Titre </p>
+    <p>Date De Parution : @Model.DateDeParution </p>
+    <p>Emprunteur (si existant) : @Model.Emprunteur </p>
+</div>
+}
+
+

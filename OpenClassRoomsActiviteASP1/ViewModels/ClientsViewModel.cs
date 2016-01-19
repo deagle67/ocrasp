@@ -5,8 +5,9 @@ using System.Web;
 
 namespace OpenClassRoomsActiviteASP1
 {
-    public class AuteursViewModel
+    public class ClientsViewModel
     {
-        public List<string> listeAuteurs;
+        public List<Client> listeClients;
+        public int qteClients;
     }
 }

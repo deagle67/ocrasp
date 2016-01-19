@@ -6,14 +6,14 @@
 
 <span>Quantité livres : @Model.qteLivres</span>
 
-<table>
-    @foreach (var livre in Model.listeLivres)
-    {
+<div>
+    <table>
+        @foreach (var livre in Model.listeLivres)
+        {
         <tr>
             <td class="col-xs-2">Titre : @livre.Titre </td>
-            <td class="col-xs-2">Auteur : @livre.Nom </td>
-            <td class="col-xs-4">Date de parution : @livre.DateDeParution </td>
-            <td class="col-xs-4">Emprunteur (si existant ) : @livre.Client</td>
+            <td class="col-xs-2">Auteur : @livre.Auteur.Nom </td>
         </tr>
-    }
-</table>
+        }
+    </table>
+</div>

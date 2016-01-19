@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace OpenClassRoomsActiviteASP1
 {
@@ -22,39 +23,39 @@ namespace OpenClassRoomsActiviteASP1
             }        
         }
 
-        public async Task<List<Auteur>> ObtenirListeDeTousLesAuteursAsync()
+        public List<string> ObtenirListeDeTousLesAuteurs()
         {
-            var listeAuteurs = await bdd.Auteurs.ToListAsync();
+            var listeAuteurs = bdd.Auteurs.Select(i => i.Nom).ToList();
             return listeAuteurs;
         }
 
-        public async Task<List<Client>> ObtenirListeDeTousLesClientsAsync()
+        public List<Client> ObtenirListeDeTousLesClients()
         {
-            var listeClients = await bdd.Clients.ToListAsync();
+            var listeClients = bdd.Clients.Include(i => i.Livre).ToList();
             return listeClients;
         }
 
-        public async Task<List<Livre>> ObtenirListeDeTousLesLivresAsync()
+        public List<Livre> ObtenirListeDeTousLesLivres()
         {
-            var listeLivres = await bdd.Livres.ToListAsync();
+            var listeLivres = bdd.Livres.Include(i => i.Auteur).ToList();
             return listeLivres;
         }
 
-        public async Task<int> ObtenirQteAuteursAsync()
+        public int ObtenirQteAuteurs()
         {
-            var qteAuteurs = await bdd.Auteurs.CountAsync();
+            var qteAuteurs = bdd.Auteurs.Count();
             return qteAuteurs;
         }
 
-        public async Task<int> ObtenirQteClientsAsync()
+        public int ObtenirQteClients()
         {
-            var qteClients = await bdd.Clients.CountAsync();
+            var qteClients = bdd.Clients.Count();
             return qteClients;
         }
 
-        public async Task<int> ObtenirQteLivresAsync()
+        public int ObtenirQteLivres()
         {
-            var qteLivres = await bdd.Livres.CountAsync();
+            var qteLivres = bdd.Livres.Count();
             return qteLivres;
         }
 
@@ -64,17 +65,29 @@ namespace OpenClassRoomsActiviteASP1
             bdd.SaveChanges();
         }
 
-        public void AjouterClient(string nom, string email, Livre livre)
+        public void AjouterClient(string nom, string email)
         {
-            bdd.Clients.Add(new Client { Nom = nom, Email = email, Livres = null });
+            bdd.Clients.Add(new Client { Nom = nom, Email = email, Livre = null });
             bdd.SaveChanges();
         }
 
         public void AjouterLivre(string titre, string auteur, DateTime dateDeParution, Client client, string email)
         {
             Auteur newAuteur = new Auteur { Nom = auteur };
-            bdd.Livres.Add(new Livre { Titre = titre, Nom = newAuteur, DateDeParution = dateDeParution, Client = client, Email = email });
+            bdd.Livres.Add(new Livre { Auteur = newAuteur, Client = null, Titre = titre, DateDeParution = dateDeParution, ClientEmail = null});
             bdd.SaveChanges();
+        }
+
+        public List<string> ObtenirLivresParAuteurId(int id)
+        {
+            var listeLivres = bdd.Livres.Where(i => i.Auteur.AuteurId.Equals(id)).Select(i => i.Titre).ToList();
+            return listeLivres;
+        }
+
+        public Livre ObtenirLivreParLivreId(int id)
+        {
+            var livreParLivreId = bdd.Livres.Include(i => i.Client).Where(i => i.LivreId.Equals(id)).FirstOrDefault();
+            return livreParLivreId;
         }
     }
 }

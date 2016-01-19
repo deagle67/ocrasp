@@ -5,8 +5,10 @@ using System.Web;
 
 namespace OpenClassRoomsActiviteASP1
 {
-    public class AuteursViewModel
+    public class LivreParId
     {
-        public List<string> listeAuteurs;
+        public string Titre;
+        public DateTime DateDeParution;
+        public string Emprunteur;
     }
 }

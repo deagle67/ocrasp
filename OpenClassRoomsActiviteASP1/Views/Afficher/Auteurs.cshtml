@@ -5,15 +5,23 @@
     ViewBag.Title = "Index";
 }
 
-<span>Quantité auteurs : @Model.qteAuteurs</span>
 
-<table>
-    @foreach (var auteur in Model.listeAuteurs)
-    {
-        <tr>
-            <td>@auteur </td>
-           
-        </tr>
-    }
+@if (Model.listeAuteurs.Count > 0)
+{
+<div>
+    <table>
+        @foreach (var auteur in Model.listeAuteurs)
+        {
+            <tr>
+                <td>@auteur </td>
 
-</table>
+            </tr>
+        }
+
+    </table>
+</div>
+}
+else
+{
+<p>Aucun livre trouvé pour l'id de l'auteur demandé. (@ViewBag.AuteurId)</p>
+}

@@ -9,12 +9,13 @@ namespace OpenClassRoomsActiviteASP1
     {
         public Client()
         {
-            this.Livres = new HashSet<Livre>();
+            this.Livre = new HashSet<Livre>();
         }
+
         [Key, Required]
         public string Email { get; set; }
         [Required, MaxLength(80)]
         public string Nom { get; set; }
-        public ICollection<Livre> Livres { get; set; }
+        public virtual ICollection<Livre> Livre { get; set; }
     }
 }
