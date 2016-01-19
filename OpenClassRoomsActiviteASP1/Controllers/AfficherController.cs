@@ -15,7 +15,6 @@ namespace OpenClassRoomsActiviteASP1
         {
             using (var dal = new Dal())
             {
-
                 var viewModel = new LivresViewModel
                 {                   
                     listeLivres = dal.ObtenirListeDeTousLesLivres(),

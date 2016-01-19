@@ -23,6 +23,16 @@ namespace OpenClassRoomsActiviteASP1
             }        
         }
 
+        public List<string> RechercherLivreOuAuteur(string id)
+        {
+            var listeResultatsLivres = bdd.Livres.Where(i => i.Titre.Contains(id)).Select(i => i.Titre).Distinct().ToList();
+            var listeResultatsAuteurs = bdd.Auteurs.Where(i => i.Nom.Contains(id)).Select(i => i.Nom).Distinct().ToList();
+            var listeResultats = new List<string>();
+            listeResultats.AddRange(listeResultatsLivres);
+            listeResultats.AddRange(listeResultatsAuteurs);
+            return listeResultats;
+        }
+
         public List<string> ObtenirListeDeTousLesAuteurs()
         {
             var listeAuteurs = bdd.Auteurs.Select(i => i.Nom).ToList();

@@ -1,0 +1,20 @@
+﻿@model List<String>
+
+@{
+    ViewBag.Title = "Résultats de la recherche";
+}
+
+<h2>Résultats de la recherche</h2>
+
+@if(Model.Count < 1)
+{
+    <p>Aucun résultat trouvé</p>
+}
+else
+{
+    foreach(var result in Model)
+    {
+        <p>@result</p>
+    }
+}
+
