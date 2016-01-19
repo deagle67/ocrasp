@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace OpenClassRoomsActiviteASP1
 {
+    [RoutePrefix("Afficher")]
+    [Route("{action=index}")]
     public class AfficherController : Controller
     {
         public ActionResult Index()
@@ -34,19 +36,19 @@ namespace OpenClassRoomsActiviteASP1
             }
         }
 
-        public ActionResult Auteurs(int? id)
+        [Route("Auteurs/{id:int?}")]
+        public ActionResult Auteurs(int id = 0)
         {
             using (var dal = new Dal())
             {
                 AuteursViewModel viewModel;
 
-                if (id.HasValue)
+                if (id > 0)
                 {
-                    int localId = id.Value;
-                    ViewBag.AuteurId = localId;
+                    ViewBag.AuteurId = id;
                     viewModel = new AuteursViewModel
                     {
-                        listeAuteurs = dal.ObtenirLivresParAuteurId(localId)
+                        listeAuteurs = dal.ObtenirLivresParAuteurId(id)
                     };
                 }
                 else
@@ -61,7 +63,8 @@ namespace OpenClassRoomsActiviteASP1
             }
         }
 
-        public ActionResult Livre(int id)
+        [Route("Livre/{id:int?}")]
+        public ActionResult Livre(int id = 0)
         {
             using (var dal = new Dal())
             {

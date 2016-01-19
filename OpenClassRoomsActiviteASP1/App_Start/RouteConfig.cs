@@ -11,9 +11,11 @@ namespace OpenClassRoomsActiviteASP1
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");            
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
+            routes.MapMvcAttributeRoutes();
+
+            /*routes.MapRoute(
                 name: "Auteurs",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Afficher", action = "Auteurs", id = 0 },
@@ -25,7 +27,7 @@ namespace OpenClassRoomsActiviteASP1
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Afficher", action = "Livre", id = 0 },
                 constraints: new { id = @"\d+" }
-            );
+            );*/
 
             routes.MapRoute(
                name: "Default",
